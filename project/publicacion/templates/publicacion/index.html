@@ -5,6 +5,16 @@
 {% endblock titulo %}
 
 {% block contenido %}
+    <div class="fs-3 pb-4">
+        <a href="{% url 'publicacion:publicacion_crear' %}">Crear Categorías de Productos</a>
+    </div>
+    
+    <div class="py-lg-4 ">
+        <form action="{% url 'publicacion:home' %}"method="get">
+            <input type="text" name="busqueda" placeholder="Buscar...">
+        </form>
+    </div>
+
     <ul>
         {% for publicacion in publicaciones %}
             <h2>{{ publicacion.nombre }}</h2>
