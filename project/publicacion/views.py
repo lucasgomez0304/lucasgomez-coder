@@ -3,6 +3,6 @@ from django.shortcuts import render
 from . import models
 
 def home(request):
-    publicaciones = models.Publicacion.objects.all()
-    context = {"publicacion": publicaciones}
+    busqueda = models.Publicacion.objects.all()
+    context = {"publicaciones": busqueda}
     return render(request, "publicacion/index.html", context)

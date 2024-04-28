@@ -5,5 +5,5 @@ app_name = "publicacion"
 from . import views
 
 urlpatterns = [
-    path("", views.home, name="home")
+    path("", views.home, name="home"),
 ]

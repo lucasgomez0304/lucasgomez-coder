@@ -5,13 +5,14 @@
 {% endblock titulo %}
 
 {% block contenido %}
+    <ul>
+        {% for publicacion in publicaciones %}
+            <h2>{{ publicacion.nombre }}</h2>
+            <p>{{ publicacion.descripcion }}</p>
+            <p>{{ publicacion.ciudad }}</p>
+        {% endfor %}
+    </ul>
 
-    {% for publicacion in publicaciones %}
-        <h2>{{ publicacion.nombre }}</h2>
-        <p>{{ publicacion.descripcion }}</p>
-        <p>{{ publicacion.ciudad }}</p>
-    {% endfor %}
-
-    <a href="{% url 'core:home' %}">core</a>
+    <a href="{% url 'core:home' %}"></a>
 
 {% endblock contenido %}
