@@ -3,8 +3,13 @@ from django.shortcuts import render, redirect
 from . import models, forms
 
 def home(request):
-    busqueda = models.Publicacion.objects.all()
-    context = {"publicaciones": busqueda}
+    consulta = request.GET.get("consulta", None)
+    if consulta:
+        print(consulta)
+        query = models.Publicacion.objects.filter(nombre__icontains=consulta)
+    else:
+        query = models.Publicacion.objects.all()
+    context = {"publicaciones": query}
     return render(request, "publicacion/index.html", context)
 
 def publicacion_crear(request):
