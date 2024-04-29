@@ -21,3 +21,13 @@ def publicacion_crear(request):
     else:  # request.method == "GET"
         form = forms.PublicacionForm()
     return render(request, "publicacion/publicacion_crear.html", context={"form": form})
+
+def ciudades(request):
+    busqueda = request.GET.get("busqueda", None)
+    if busqueda:
+        print(busqueda)
+        query = models.Ciudad.objects.filter(nombre__icontains=busqueda)
+    else:
+        query = models.Ciudad.objects.all()
+    context = {"ciudades": query}
+    return render(request, "publicacion/ciudades.html", context)

@@ -8,7 +8,7 @@ class Pais(models.Model):
     
     class Meta:
         verbose_name = "País"
-        verbose_name_plural = "Pises"
+        verbose_name_plural = "Países"
 
 
 class Ciudad(models.Model):

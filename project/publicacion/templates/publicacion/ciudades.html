@@ -1,7 +1,7 @@
 {% extends 'core/base.html' %}
 
 {% block titulo %}
-    publicacion
+    Ciudades
 {% endblock titulo %}
 
 {% block contenido %}
@@ -29,29 +29,26 @@
 
     <!-- Formulario de busqueda -->
     <div class="py-lg-4">
-        <form action="{% url 'publicacion:home' %}" method="get" class="form-busqueda">
-            <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
+        <form action="{% url 'publicacion:ciudades' %}" method="get" class="form-busqueda">
+            <input type="text" name="busqueda" placeholder="Buscar..." class="input-busqueda">
         </form>
     </div>
 
     
     <div class="row row-cols-1 row-cols-md-2">
-        {% for publicacion in publicaciones %}
+        {% for ciudad in ciudades %}
             <div class="col-md-4 mb-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">{{ publicacion.nombre }}</h2>
-                        <p class="card-text">{{ publicacion.descripcion }}</p>
+                        <h2 class="card-title">{{ ciudad.ciudad }}</h2>
                     </div>
                     <div class="card-footer">
-                        <a class="btn btn-primary btn-sm" href="#!">{{ publicacion.ciudad }}</a>
-                        <a class="btn btn-primary btn-sm" href="#!">{{ publicacion.ciudad.pais }}</a>
+                        <a class="btn btn-primary btn-sm" href="#!">{{ ciudad.pais }}</a>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
-    
     
 
     <a href="{% url 'core:home' %}"></a>
