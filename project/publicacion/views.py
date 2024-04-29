@@ -26,7 +26,7 @@ def ciudades(request):
     busqueda = request.GET.get("busqueda", None)
     if busqueda:
         print(busqueda)
-        query = models.Ciudad.objects.filter(nombre__icontains=busqueda)
+        query = models.Ciudad.objects.filter(ciudad__icontains=busqueda)
     else:
         query = models.Ciudad.objects.all()
     context = {"ciudades": query}
