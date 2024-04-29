@@ -5,23 +5,54 @@
 {% endblock titulo %}
 
 {% block contenido %}
-    <div class="fs-3 pb-4">
-        <a href="{% url 'publicacion:publicacion_crear' %}">Crear Categorías de Productos</a>
-    </div>
-    
-    <div class="py-lg-4 ">
-        <form action="{% url 'publicacion:home' %}"method="get">
-            <input type="text" name="consulta" placeholder="Buscar...">
+
+    <!-- Estilo para el boton de busqueda -->
+    <style>
+        /* Estilos para el formulario de búsqueda */
+        .form-busqueda {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilos para el campo de entrada */
+        .input-busqueda {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        
+
+    </style>
+
+
+    <!-- Formulario de busqueda -->
+    <div class="py-lg-4">
+        <form action="{% url 'publicacion:home' %}" method="get" class="form-busqueda">
+            <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
         </form>
     </div>
 
-    <ul>
+    
+    <div class="row row-cols-1 row-cols-md-2">
         {% for publicacion in publicaciones %}
-            <h2>{{ publicacion.nombre }}</h2>
-            <p>{{ publicacion.descripcion }}</p>
-            <p>{{ publicacion.ciudad }}</p>
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">{{ publicacion.nombre }}</h2>
+                    <p class="card-text">{{ publicacion.descripcion }}</p>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-primary btn-sm" href="#!">{{ publicacion.ciudad }}</a>
+                    <a class="btn btn-primary btn-sm" href="#!">{{ publicacion.ciudad.pais }}</a>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-    </ul>
+    </div>
+    
+    
 
     <a href="{% url 'core:home' %}"></a>
 

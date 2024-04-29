@@ -5,6 +5,10 @@ class Pais(models.Model):
 
     def __str__(self) -> str:
         return self.pais
+    
+    class Meta:
+        verbose_name = "País"
+        verbose_name_plural = "Pises"
 
 
 class Ciudad(models.Model):
@@ -14,6 +18,10 @@ class Ciudad(models.Model):
     def __str__(self) -> str:
         return self.ciudad
     
+    class Meta:
+        verbose_name = "Ciudad"
+        verbose_name_plural = "Ciudades"
+    
 
 class Publicacion(models.Model):
     nombre = models.CharField(max_length=200)
@@ -22,5 +30,9 @@ class Publicacion(models.Model):
 
     def __str__(self) -> str:
         return self.nombre
+    
+    class Meta:
+        verbose_name = "Publicación"
+        verbose_name_plural = "Publicaciones"
     
 
