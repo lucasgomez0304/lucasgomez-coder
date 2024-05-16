@@ -1,0 +1,56 @@
+{% extends 'core/base.html' %}
+
+{% block titulo %}
+    publicacion:list
+{% endblock titulo %}
+
+{% block contenido %}
+
+    <!-- Estilo para el boton de busqueda -->
+    <style>
+        /* Estilos para el formulario de búsqueda */
+        .form-busqueda {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Estilos para el campo de entrada */
+        .input-busqueda {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+    </style>
+
+
+    <!-- Formulario de busqueda -->
+    <div class="py-lg-4">
+        <form action="{% url 'publicacion:publicacion_list' %}" method="get" class="form-busqueda">
+            <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
+        </form>
+    </div>
+
+    
+    <div class="row row-cols-1 row-cols-md-2">
+        {% for publicacion in object_list %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ publicacion.nombre }}</h2>
+                        <p class="card-text">{{ publicacion.descripcion }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-sm" href="{% url 'publicacion:publicacion_detail' publicacion.id %}">Detalle</a>
+                        <a class="btn btn-success btn-sm" href="{% url 'publicacion:publicacion_update' publicacion.id %}">Cambiar</a>
+                        <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:publicacion_delete' publicacion.id %}">Borrar</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <a href="{% url 'core:home' %}"></a>
+
+{% endblock contenido %}

@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% block titulo %}
+    Publicacion: detalle
+{% endblock titulo %}
+
+{% block contenido %}
+
+    <style>
+        
+
+        .card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            text-align: center;
+        }
+
+        .card-body {
+            padding: 15px;
+        }
+
+        .card-footer {
+            padding: 15px;
+            border-top: 1px solid #ccc;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+
+        .list-group {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list-group-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .list-group-item:last-child {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff; 
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+    </style>
+
+
+
+
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <h2>Detalles de la Publicación</h2>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Nombre:</strong> {{ object.nombre }}</li>
+                    <li class="list-group-item"><strong>Descripción:</strong> {{ object.descripcion }}</li>
+                    <li class="list-group-item"><strong>Ciudad:</strong> {{ object.ciudad }}</li>
+                </ul>
+            </div>
+            <div class="card-footer text-center">
+                <a href="{% url 'publicacion:publicacion_list' %}" class="btn btn-secondary">Volver</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock contenido %}

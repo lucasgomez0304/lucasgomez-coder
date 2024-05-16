@@ -1,7 +1,9 @@
 {% extends 'core/base.html' %}
 
 {% block titulo %}
-    Publicacion: Crear
+
+    Añadir Ciudad
+    
 {% endblock titulo %}
 
 {% block contenido %}
@@ -59,6 +61,10 @@
         </table>
         <button type="submit" class="btn btn-primary">Guardar</button>
     </form>
-
+    {% comment  %}
+        <div class="fs-3 pb-4">
+            <a href="{% url 'publicacion:ciudad' %}">Ver más ciudades</a>
+        </div>
+    {% endcomment %}
 
 {% endblock contenido %}
