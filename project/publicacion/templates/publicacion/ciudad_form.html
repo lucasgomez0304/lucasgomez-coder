@@ -53,18 +53,16 @@
             background-color: #0056b3;
         }
     </style>
-
+    
     <form action="" method="post">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
+        <a class="btn btn-secondary" href="{% url 'publicacion:ciudad_list' %}">Volver</a>
         <button type="submit" class="btn btn-primary">Guardar</button>
+        
     </form>
-    {% comment  %}
-        <div class="fs-3 pb-4">
-            <a href="{% url 'publicacion:ciudad_list' %}">Ver más ciudades</a>
-        </div>
-    {% endcomment %}
+
 
 {% endblock contenido %}

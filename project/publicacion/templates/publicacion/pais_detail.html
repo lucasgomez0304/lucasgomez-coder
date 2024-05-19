@@ -99,7 +99,7 @@
                 </ul>
             </div>
             <div class="card-footer text-center">
-                <a href="{% url 'publicacion:pais_list' %}" class="btn btn-secondary">Volver</a>
+                <a class="btn btn-secondary" href="{% url 'publicacion:pais_list' %}">Volver</a>
                 <a class="btn btn-success btn-sm" href="{% url 'publicacion:pais_update' pais.id %}">Cambiar</a>
                 <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:pais_delete' pais.id %}">Borrar</a>
                 <a class="btn btn-success btn-sm" href="{% url 'publicacion:ciudad_create'%}">Agregar Ciudad</a>

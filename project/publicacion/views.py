@@ -74,13 +74,13 @@ class CiudadList(ListView):
 class CiudadCreate(LoginRequiredMixin, CreateView):
     model = models.Ciudad
     form_class = forms.CiudadForm
-    success_url = reverse_lazy("publicacion:ciudad")
+    success_url = reverse_lazy("publicacion:ciudad_list")
 
 # UPDATE
 class CiudadUpdate(LoginRequiredMixin, UpdateView):
     model = models.Ciudad
     form_class = forms.CiudadForm
-    success_url = reverse_lazy("publicacion:ciudad")
+    success_url = reverse_lazy("publicacion:ciudad_list")
 
 # DETAIL
 class CiudadDetail(DetailView):
@@ -89,7 +89,7 @@ class CiudadDetail(DetailView):
 # DELETE
 class CiudadDelete(LoginRequiredMixin, DeleteView):
     model = models.Ciudad
-    success_url = reverse_lazy("publicacion:ciudad")
+    success_url = reverse_lazy("publicacion:ciudad_list")
 
 
 # *** PAIS
