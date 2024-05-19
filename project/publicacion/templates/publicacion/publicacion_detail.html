@@ -42,8 +42,9 @@
         }
 
         .list-group-item {
-            padding: 10px;
+            padding: 15px;
             border-bottom: 1px solid #ddd;
+            text-align: center;
         }
 
         .list-group-item:last-child {
@@ -55,7 +56,6 @@
             padding: 10px 20px;
             font-size: 16px;
             color: #fff;
-            background-color: #007bff; 
             border: none;
             border-radius: 5px;
             text-decoration: none;
@@ -86,12 +86,16 @@
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Nombre:</strong> {{ object.nombre }}</li>
+                    <li class="list-group-item"><strong>Precio:</strong> ${{ object.precio }}</li>
                     <li class="list-group-item"><strong>Descripción:</strong> {{ object.descripcion }}</li>
                     <li class="list-group-item"><strong>Ciudad:</strong> {{ object.ciudad }}</li>
+                    <li class="list-group-item"><strong>Concepto:</strong> {{ object.concepto }}</li>
                 </ul>
             </div>
             <div class="card-footer text-center">
                 <a href="{% url 'publicacion:publicacion_list' %}" class="btn btn-secondary">Volver</a>
+                <a class="btn btn-success btn-sm" href="{% url 'publicacion:publicacion_update' publicacion.id %}">Cambiar</a>
+                <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:publicacion_delete' publicacion.id %}">Borrar</a>
             </div>
         </div>
     </div>

@@ -16,13 +16,13 @@
         <h3 class="pb-3 border-bottom">Ciudades</h3>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
             <a class="btn btn-success me-md-2" href="{% url 'publicacion:ciudad_create' %}" role="button">Añadir una Ciudad</a>
-            <a class="btn btn-outline-success" href="{% url 'publicacion:ciudad' %}" role="button">Lista de Ciudades</a>
+            <a class="btn btn-outline-success" href="{% url 'publicacion:ciudad_list' %}" role="button">Lista de Ciudades</a>
         </div>
 
         <h3 class="pb-3 border-bottom">Paises</h3>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4">
-            <a class="btn btn-danger me-md-2" href="#!" role="button">Añadir un País</a>
-            <a class="btn btn-outline-danger" href="#!" role="button">Lista de Países</a>
+            <a class="btn btn-danger me-md-2" href="{% url 'publicacion:pais_create' %}" role="button">Añadir un País</a>
+            <a class="btn btn-outline-danger" href="{% url 'publicacion:pais_list' %}" role="button">Lista de Países</a>
         </div>
 
         

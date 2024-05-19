@@ -1,6 +1,6 @@
 {% extends 'core/base.html' %}
 {% block titulo %}
-    Ciudad: detalle
+    País: detalle
 {% endblock titulo %}
 
 {% block contenido %}
@@ -82,22 +82,34 @@
     <div class="container mt-5  ">
         <div class="card">
             <div class="card-header">
-                <h2>Detalles de la Ciudad</h2>
+                <h2>Detalles de la País</h2>
             </div>
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>Nombre de Ciudad:</strong> {{ object.ciudad }}</li>
-                    <li class="list-group-item"><strong>País:</strong> {{ object.pais }}</li>
+                    <li class="list-group-item"><strong>{{ object.pais }}</strong> </li>
+                        <ul class="list-group">
+                            {% for ciudad in pais.ciudades.all %}
+                                <li class="list-group-item">
+                                    <strong>Ciudad:</strong> {{ ciudad.ciudad }}
+                               </li>
+                            {% endfor %}
+                        </ul>   
+                    
                     
                 </ul>
             </div>
             <div class="card-footer text-center">
-                <a href="{% url 'publicacion:ciudad' %}" class="btn btn-secondary">Volver</a>
-                <a class="btn btn-success btn-sm" href="{% url 'publicacion:ciudad_update' ciudad.id %}">Cambiar</a>
-                <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:ciudad_delete' ciudad.id %}">Borrar</a>
-                <a class="btn btn-success btn-sm" href="{% url 'publicacion:pais_detail' object.pais.id%}">País</a>
+                <a href="{% url 'publicacion:pais_list' %}" class="btn btn-secondary">Volver</a>
+                <a class="btn btn-success btn-sm" href="{% url 'publicacion:pais_update' pais.id %}">Cambiar</a>
+                <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:pais_delete' pais.id %}">Borrar</a>
+                <a class="btn btn-success btn-sm" href="{% url 'publicacion:ciudad_create'%}">Agregar Ciudad</a>
             </div>
         </div>
     </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 {% endblock contenido %}

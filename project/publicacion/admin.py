@@ -4,4 +4,6 @@ from . import models
 
 admin.site.register(models.Pais)
 admin.site.register(models.Ciudad)
+admin.site.register(models.Concepto)
 admin.site.register(models.Publicacion)
+

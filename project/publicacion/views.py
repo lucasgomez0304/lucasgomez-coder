@@ -65,7 +65,7 @@ class CiudadList(ListView):
     def get_queryset(self) -> QuerySet:
         if self.request.GET.get("consulta"):
             consulta = self.request.GET.get("consulta")
-            object_list = models.Ciudad.objects.filter(nombre__icontains=consulta)
+            object_list = models.Ciudad.objects.filter(ciudad__icontains=consulta)
         else:
             object_list = models.Ciudad.objects.all()
         return object_list
@@ -90,3 +90,39 @@ class CiudadDetail(DetailView):
 class CiudadDelete(LoginRequiredMixin, DeleteView):
     model = models.Ciudad
     success_url = reverse_lazy("publicacion:ciudad")
+
+
+# *** PAIS
+
+# LIST
+class PaisList(ListView):
+    model = models.Pais
+
+    def get_queryset(self) -> QuerySet:
+        if self.request.GET.get("consulta"):
+            consulta = self.request.GET.get("consulta")
+            object_list = models.Pais.objects.filter(pais__icontains=consulta)
+        else:
+            object_list = models.Pais.objects.all()
+        return object_list
+
+# CREAR
+class PaisCreate(LoginRequiredMixin, CreateView):
+    model = models.Pais
+    form_class = forms.PaisForm
+    success_url = reverse_lazy("publicacion:pais_list")
+
+# UPDATE
+class PaisUpdate(LoginRequiredMixin, UpdateView):
+    model = models.Pais
+    form_class = forms.PaisForm
+    success_url = reverse_lazy("publicacion:pais_list")
+
+# DETAIL
+class PaisDetail(DetailView):
+    model = models.Pais
+
+# DELETE
+class PaisDelete(LoginRequiredMixin, DeleteView):
+    model = models.Pais
+    success_url = reverse_lazy("publicacion:pais_list")

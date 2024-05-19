@@ -40,6 +40,8 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ publicacion.nombre }}</h2>
                         <p class="card-text">{{ publicacion.descripcion }}</p>
+                        <p class="card-text">$ {{ publicacion.precio }}</p>
+                        <p class="card-subtitle col-10 "> {{ publicacion.concepto }}</p>
                     </div>
                     <div class="card-footer">
                         <a class="btn btn-primary btn-sm" href="{% url 'publicacion:publicacion_detail' publicacion.id %}">Detalle</a>
