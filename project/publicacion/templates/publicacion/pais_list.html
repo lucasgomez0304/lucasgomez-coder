@@ -1,55 +1,67 @@
 {% extends 'core/base.html' %}
 
 {% block titulo %}
-    Ciudades
+    Países
 {% endblock titulo %}
 
 {% block contenido %}
 
-<style>
-    /* Estilos para el formulario de búsqueda */
-    .form-busqueda {
-        display: flex;
-        align-items: center;
-    }
+    <style>
+        .form-busqueda {
+            display: flex;
+            align-items: center;
+            justify-content: center; 
+            margin-bottom: 20px;
+        }
+        .input-busqueda {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            flex: 1;
+            margin-right: 10px;
+        }
+        .btn-filtrar {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        .btn-filtrar:hover {
+            background-color: #0056b3;
+        }
+    </style>
 
-    /* Estilos para el campo de entrada */
-    .input-busqueda {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        flex: 1;
-    }
+    <!-- Formulario de busqueda -->
+    <div  >
+        <form action="{% url 'publicacion:pais_list' %}" method="get" class="form-busqueda">
+            <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
+            <button type="submit" class="btn-filtrar">Buscar</button>
+        </form>
+    </div>
 
-</style>
-
-
-<!-- Formulario de busqueda -->
-<div class="py-lg-4">
-    <form action="{% url 'publicacion:pais_list' %}" method="get" class="form-busqueda">
-        <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
-    </form>
-</div>
-
-
-<div class="row row-cols-1 row-cols-md-2">
-    {% for pais in object_list %}
-        <div class="col-md-4 mb-5">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h2 class="card-title">{{ pais.pais }}</h2>
-                </div>
-                <div class="card-footer">
-                    <a class="btn btn-primary btn-sm" href="{% url 'publicacion:pais_detail' pais.id %}">Detalle</a>
-                    <a class="btn btn-success btn-sm" href="{% url 'publicacion:pais_update' pais.id %}">Cambiar</a>
-                    <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:pais_delete' pais.id %}">Borrar</a>
+    <!-- contenido -->
+    <div class="row row-cols-1 row-cols-md-2">
+        {% for pais in object_list %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">{{ pais.pais }}</h2>
+                    </div>
+                    <div class="card-footer">
+                        <a class="btn btn-primary btn-sm" href="{% url 'publicacion:pais_detail' pais.id %}">Detalle</a>
+                        <a class="btn btn-success btn-sm" href="{% url 'publicacion:pais_update' pais.id %}">Cambiar</a>
+                        <a class="btn btn-danger  btn-sm" href="{% url 'publicacion:pais_delete' pais.id %}">Borrar</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
-</div>
-    
-
-    <a href="{% url 'core:home' %}"></a>
+        {% endfor %}
+    </div>
+        
+    <!-- volver -->
+    <div class="container py-lg-4">
+        <a class="btn btn-secondary" href="{% url 'publicacion:home' %}">Volver</a>
+    </div>
 
 {% endblock contenido %}

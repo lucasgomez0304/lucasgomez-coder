@@ -11,9 +11,7 @@
     <form method="post">
         {% csrf_token %}
         <button type="submit" class="btn btn-danger">Confirmar</button>
+        <a class="btn btn-secondary" href="{% url 'publicacion:publicacion_list' %}">Volver</a>
     </form>
-    <div class="fs-3 pb-4">
-        <a href="{% url 'publicacion:home' %}">Volver</a>
-    </div>
 
 {% endblock contenido %}

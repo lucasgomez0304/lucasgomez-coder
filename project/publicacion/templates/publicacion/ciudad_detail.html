@@ -1,20 +1,20 @@
 {% extends 'core/base.html' %}
+
 {% block titulo %}
+
     Ciudad: detalle
-{% endblock titulo %}
+
+    {% endblock titulo %}
 
 {% block contenido %}
 
     <style>
-        
-
         .card {
             border: 1px solid #ccc;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background-color: #f9f9f9;
         }
-
         .card-header {
             background-color: #007bff;
             color: white;
@@ -24,34 +24,27 @@
             border-top-right-radius: 5px;
             text-align: center;
         }
-
         .card-body {
             padding: 15px;
         }
-
         .card-footer {
             padding: 15px;
             border-top: 1px solid #ccc;
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
         }
-
         .list-group {
             list-style: none;
             padding: 0;
         }
-
         .list-group-item {
             padding: 15px;
             border-bottom: 1px solid #ddd;
-            text-align: center;
-            
+            text-align: center;   
         }
-
         .list-group-item:last-child {
             border-bottom: none;
         }
-
         .btn {
             display: inline-block;
             padding: 10px 20px;
@@ -62,23 +55,18 @@
             text-decoration: none;
             transition: background-color 0.3s ease;
         }
-
         .btn:hover {
             background-color: #0056b3;
         }
-
         .btn-secondary {
             background-color: #6c757d;
         }
-
         .btn-secondary:hover {
             background-color: #5a6268;
         }
     </style>
 
-
-
-
+    <!-- Contenido -->
     <div class="container mt-5  ">
         <div class="card">
             <div class="card-header">
@@ -88,7 +76,6 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Nombre de Ciudad:</strong> {{ object.ciudad }}</li>
                     <li class="list-group-item"><strong>País:</strong> {{ object.pais }}</li>
-                    
                 </ul>
             </div>
             <div class="card-footer text-center">

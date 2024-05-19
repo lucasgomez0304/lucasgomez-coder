@@ -1,22 +1,18 @@
 {% extends 'core/base.html' %}
 
 {% block titulo %}
-    publicacion:list
+    publicaciones
 {% endblock titulo %}
     
 {% block contenido %}
 
-    <!-- Estilo para el botón de búsqueda -->
     <style>
-        /* Estilos para el contenedor del formulario */
         .form-busqueda {
             display: flex;
             align-items: center;
-            justify-content: center; /* Centrar horizontalmente */
+            justify-content: center; 
             margin-bottom: 20px;
         }
-
-        /* Estilos para el campo de entrada de búsqueda */
         .input-busqueda {
             padding: 10px;
             border: 1px solid #ccc;
@@ -24,8 +20,6 @@
             flex: 1;
             margin-right: 10px;
         }
-
-        /* Estilos para el botón de filtro */
         .btn-filtrar {
             padding: 10px 20px;
             border: none;
@@ -34,26 +28,19 @@
             color: white;
             cursor: pointer;
         }
-
         .btn-filtrar:hover {
             background-color: #0056b3;
         }
-
-        /* Estilos para el contenedor del formulario de filtro */
         .filter-container {
             display: flex;
-            justify-content: center; /* Centrar horizontalmente */
+            justify-content: center; 
             margin-bottom: 20px;
         }
-
-        /* Estilos para el formulario de filtro */
         .form-filtro {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
-        /* Estilos para los campos de selección */
         .form-filtro select {
             padding: 10px;
             border: 1px solid #ccc;
@@ -78,6 +65,7 @@
         </form>
     </div>
 
+    <!-- Contenido -->
     <div class="row row-cols-1 row-cols-md-2">
         {% for publicacion in object_list %}
             <div class="col-md-4 mb-5">
@@ -85,7 +73,7 @@
                     <div class="card-body">
                         <h2 class="card-title">{{ publicacion.nombre }}</h2>
                         <p class="card-text">{{ publicacion.descripcion }}</p>
-                        <p class="card-text">$ {{ publicacion.precio }}</p>
+                        <p class="card-text">${{ publicacion.precio }}</p>
                         <p class="card-subtitle col-10 "> {{ publicacion.concepto }}</p>
                     </div>
                     <div class="card-footer">
@@ -98,6 +86,9 @@
         {% endfor %}
     </div>
 
-    <a href="{% url 'core:home' %}"></a>
-
+    <!-- volver -->
+    <div class="container py-lg-4">
+        <a class="btn btn-secondary" href="{% url 'publicacion:home' %}">Volver</a>
+    </div>
+    
 {% endblock contenido %}
