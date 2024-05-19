@@ -3,36 +3,81 @@
 {% block titulo %}
     publicacion:list
 {% endblock titulo %}
-
+    
 {% block contenido %}
 
-    <!-- Estilo para el boton de busqueda -->
+    <!-- Estilo para el botón de búsqueda -->
     <style>
-        /* Estilos para el formulario de búsqueda */
+        /* Estilos para el contenedor del formulario */
         .form-busqueda {
             display: flex;
             align-items: center;
+            justify-content: center; /* Centrar horizontalmente */
+            margin-bottom: 20px;
         }
 
-        /* Estilos para el campo de entrada */
+        /* Estilos para el campo de entrada de búsqueda */
         .input-busqueda {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             flex: 1;
+            margin-right: 10px;
         }
 
+        /* Estilos para el botón de filtro */
+        .btn-filtrar {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn-filtrar:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos para el contenedor del formulario de filtro */
+        .filter-container {
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para el formulario de filtro */
+        .form-filtro {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Estilos para los campos de selección */
+        .form-filtro select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
     </style>
 
 
-    <!-- Formulario de busqueda -->
-    <div class="py-lg-4">
+    <!-- búsqueda -->
+    <div  >
         <form action="{% url 'publicacion:publicacion_list' %}" method="get" class="form-busqueda">
             <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
+            <button type="submit" class="btn-filtrar">Buscar</button>
+        </form>
+    </div>
+    <div class="filter-container py-lg-4">
+        <form method="get" class="form-filtro">
+            {{ filter_form.pais }}
+            {{ filter_form.ciudad }}
+            {{ filter_form.concepto }}
+            <button type="submit" class="btn-filtrar">Filtrar</button>
         </form>
     </div>
 
-    
     <div class="row row-cols-1 row-cols-md-2">
         {% for publicacion in object_list %}
             <div class="col-md-4 mb-5">

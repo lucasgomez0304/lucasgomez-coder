@@ -4,18 +4,9 @@ from django.db.models.query import QuerySet
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
+from .forms import PublicacionFilterForm
 
 from . import models, forms
-
-#    def home(request):
-#        consulta = request.GET.get("consulta", None)
-#        if consulta:
-#            print(consulta)
-#            query = models.Publicacion.objects.filter(nombre__icontains=consulta)
-#        else:
-#            query = models.Publicacion.objects.all()
-#        context = {"publicaciones": query}
-#        return render(request, "publicacion/index.html", context)
 
 def home(request):
     return render(request, "publicacion/index.html")
@@ -26,13 +17,36 @@ def home(request):
 class PublicacionList(ListView):
     model = models.Publicacion
 
-    def get_queryset(self) -> QuerySet:
-        if self.request.GET.get("consulta"):
-            consulta = self.request.GET.get("consulta")
-            object_list = models.Publicacion.objects.filter(nombre__icontains=consulta)
-        else:
-            object_list = models.Publicacion.objects.all()
-        return object_list
+#    def get_queryset(self) -> QuerySet:
+#        if self.request.GET.get("consulta"):
+#            consulta = self.request.GET.get("consulta")
+#            object_list = models.Publicacion.objects.filter(nombre__icontains=consulta)
+#        else:
+#            object_list = models.Publicacion.objects.all()
+#        return object_list
+    
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        consulta = self.request.GET.get("consulta")
+        if consulta:
+            queryset = queryset.filter(nombre__icontains=consulta)
+
+        self.filter_form = PublicacionFilterForm(self.request.GET)
+        if self.filter_form.is_valid():
+            if self.filter_form.cleaned_data.get('pais'):
+                queryset = queryset.filter(ciudad__pais=self.filter_form.cleaned_data['pais'])
+            if self.filter_form.cleaned_data.get('ciudad'):
+                queryset = queryset.filter(ciudad=self.filter_form.cleaned_data['ciudad'])
+            if self.filter_form.cleaned_data.get('concepto'):
+                queryset = queryset.filter(concepto=self.filter_form.cleaned_data['concepto'])
+        
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filter_form'] = self.filter_form
+        return context
 
 # CREAR
 class PublicacionCreate(LoginRequiredMixin, CreateView):

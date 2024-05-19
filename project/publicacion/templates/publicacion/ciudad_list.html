@@ -24,12 +24,15 @@
 </style>
 
 
-<!-- Formulario de busqueda -->
-<div class="py-lg-4">
-    <form action="{% url 'publicacion:ciudad_list' %}" method="get" class="form-busqueda">
-        <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
-    </form>
-</div>
+    <!-- Formulario de busqueda -->
+    <div class="py-lg-4">
+        <form action="{% url 'publicacion:ciudad_list' %}" method="get" class="form-busqueda">
+            <input type="text" name="consulta" placeholder="Buscar..." class="input-busqueda">
+        </form>
+    </div>
+
+
+
 
 
 <div class="row row-cols-1 row-cols-md-2">
